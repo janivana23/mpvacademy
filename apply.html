@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Book Trial - MPV Academy</title>
+<title>MPV Academy - Apply</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <style>
@@ -22,13 +22,9 @@ input, select {
   box-sizing:border-box;
 }
 
-label {
+.subjects label {
   display:block;
-  margin:6px 0;
-}
-
-.subjects {
-  margin:10px 0;
+  margin:5px 0;
 }
 
 button {
@@ -63,7 +59,7 @@ button {
   <option>Other</option>
 </select>
 
-<h4>Subjects (select multiple):</h4>
+<h4>Subjects:</h4>
 
 <div class="subjects">
   <label><input type="checkbox" value="Math"> Math</label>
@@ -71,7 +67,6 @@ button {
   <label><input type="checkbox" value="Science"> Science</label>
   <label><input type="checkbox" value="Physics"> Physics</label>
   <label><input type="checkbox" value="Chemistry"> Chemistry</label>
-  <label><input type="checkbox" value="Biology"> Biology</label>
   <label><input type="checkbox" value="IT"> IT</label>
 </div>
 
@@ -94,32 +89,39 @@ const URL = "https://script.google.com/macros/s/AKfycbxeuq5rv4QYnMlyqgJ1mkoz2oeG
 document.getElementById("form").addEventListener("submit", async (e)=>{
   e.preventDefault();
 
-  // collect selected subjects
+  // collect multiple subjects properly
   const subjects = Array.from(
     document.querySelectorAll('input[type="checkbox"]:checked')
-  ).map(cb => cb.value).join(", ");
+  ).map(x => x.value).join(", ");
 
-  const res = await fetch(URL,{
-    method:"POST",
-    body:JSON.stringify({
-      action:"lead",
-      parent_name: parent.value,
-      student_name: student.value,
-      phone: phone.value,
-      level: level.value,
-      subject: subjects,
-      plan: plan.value
-    })
-  });
+  const payload = {
+    action: "lead",
+    parent_name: document.getElementById("parent").value,
+    student_name: document.getElementById("student").value,
+    phone: document.getElementById("phone").value,
+    level: document.getElementById("level").value,
+    subject: subjects,
+    plan: document.getElementById("plan").value
+  };
 
-  const result = await res.json();
+  try {
+    const res = await fetch(URL, {
+      method: "POST",
+      body: JSON.stringify(payload)
+    });
 
-  if(result.whatsapp){
-    window.location.href = result.whatsapp;
-  } else {
-    alert("Submitted successfully.");
+    const result = await res.json();
+
+    if (result.whatsapp) {
+      window.location.href = result.whatsapp;
+    } else {
+      alert("Submitted successfully!");
+    }
+
+  } catch (err) {
+    alert("Error submitting form");
+    console.log(err);
   }
-
 });
 
 </script>
