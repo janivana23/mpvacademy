@@ -17,18 +17,33 @@ body {
     background: linear-gradient(120deg, #ff7a00, #6a0dad);
     color: white;
     text-align: center;
-    padding: 80px 20px;
+    padding: 90px 20px;
 }
 
-/* BUTTON */
+.hero h1 { font-size: 42px; margin-bottom: 10px; }
+.hero p { font-size: 18px; }
+
 .button {
-    padding: 12px 20px;
+    padding: 14px 24px;
     background: white;
     color: #ff7a00;
     border-radius: 8px;
     text-decoration: none;
-    margin: 5px;
+    margin: 8px;
     display: inline-block;
+    font-weight: bold;
+}
+
+/* SECTION */
+section {
+    padding: 60px 20px;
+    max-width: 1100px;
+    margin: auto;
+}
+
+h2 {
+    text-align: center;
+    margin-bottom: 30px;
 }
 
 /* GRID */
@@ -40,48 +55,53 @@ body {
 
 .card {
     background: white;
-    padding: 20px;
+    padding: 25px;
     border-radius: 12px;
     transition: 0.3s;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
 }
 
-.card:hover {
-    transform: translateY(-5px);
-}
+.card:hover { transform: translateY(-6px); }
 
 /* TABS */
-.tabs {
-    text-align: center;
-    margin-bottom: 20px;
-}
-
+.tabs { text-align: center; margin-bottom: 20px; }
 .tab {
     display: inline-block;
-    padding: 10px 20px;
+    padding: 10px 18px;
     background: #ddd;
     margin: 5px;
     cursor: pointer;
     border-radius: 6px;
 }
+.tab.active { background: #6a0dad; color: white; }
 
-.tab.active {
-    background: #6a0dad;
-    color: white;
+.hidden { display: none; }
+
+/* FORM */
+form input, form select {
+    width: 100%;
+    padding: 12px;
+    margin: 8px 0;
+    border-radius: 6px;
+    border: 1px solid #ccc;
 }
 
-/* HIDDEN */
-.hidden {
-    display: none;
+/* TESTIMONIAL */
+.testimonial {
+    background: white;
+    padding: 20px;
+    border-left: 5px solid #6a0dad;
+    font-style: italic;
 }
 
-/* STICKY WHATSAPP */
+/* WHATSAPP FLOAT */
 .whatsapp {
     position: fixed;
     bottom: 20px;
     right: 20px;
     background: #25D366;
     color: white;
-    padding: 15px;
+    padding: 16px;
     border-radius: 50%;
     font-size: 20px;
     text-decoration: none;
@@ -93,10 +113,16 @@ body {
     transform: translateY(20px);
     transition: 0.6s;
 }
-
 .fade.show {
     opacity: 1;
     transform: translateY(0);
+}
+
+footer {
+    background: #222;
+    color: white;
+    text-align: center;
+    padding: 20px;
 }
 </style>
 </head>
@@ -107,80 +133,141 @@ body {
 <div class="hero">
     <h1>MPV Academy 🚀</h1>
     <p>From Struggling to Top Scorer</p>
+    <p>Math | English | Science | IT</p>
+
     <a href="https://wa.me/6589872923" class="button">WhatsApp Us</a>
+    <a href="#form" class="button">Book Free Trial</a>
 </div>
 
-<!-- LEVEL SELECTOR -->
+<!-- WHY -->
 <section class="fade">
-    <h2 style="text-align:center;">Select Your Level</h2>
-    <div style="text-align:center;">
-        <button onclick="showLevel('primary')" class="button">Primary</button>
-        <button onclick="showLevel('secondary')" class="button">Secondary</button>
-        <button onclick="showLevel('advanced')" class="button">Exam Prep</button>
+    <h2>Why Choose MPV Academy?</h2>
+    <div class="grid">
+        <div class="card">Max 5 Students per Class</div>
+        <div class="card">Personalized Learning</div>
+        <div class="card">Exam-Focused Strategies</div>
+        <div class="card">Primary → University Level</div>
+        <div class="card">Online & In-Person (Batam)</div>
+        <div class="card">Math + IT Specialization</div>
     </div>
 </section>
 
 <!-- SUBJECT TABS -->
 <section class="fade">
-    <h2 style="text-align:center;">Subjects</h2>
+    <h2>Subjects</h2>
 
     <div class="tabs">
-        <div class="tab active" onclick="showTab('math')">Math</div>
-        <div class="tab" onclick="showTab('english')">English</div>
-        <div class="tab" onclick="showTab('it')">IT</div>
+        <div class="tab active" onclick="showTab(event,'math')">Math</div>
+        <div class="tab" onclick="showTab(event,'english')">English</div>
+        <div class="tab" onclick="showTab(event,'science')">Science</div>
+        <div class="tab" onclick="showTab(event,'it')">IT</div>
     </div>
 
-    <div id="math" class="card">Math: Algebra, Geometry, Exam Strategies</div>
-    <div id="english" class="card hidden">English: Writing, Comprehension, IELTS Prep</div>
-    <div id="it" class="card hidden">IT: Coding, Python, University Level</div>
+    <div id="math" class="card">Algebra, Geometry, Exam Techniques</div>
+    <div id="english" class="card hidden">Writing, Grammar, IELTS Prep</div>
+    <div id="science" class="card hidden">Concept clarity for exams</div>
+    <div id="it" class="card hidden">Coding, Python, University Level</div>
 </section>
 
 <!-- PRICING -->
 <section class="fade">
-    <h2 style="text-align:center;">Pricing</h2>
+    <h2>Pricing Plans</h2>
     <div class="grid">
-        <div class="card">Starter<br>750K/month</div>
-        <div class="card">Achiever ⭐<br>1.5M/month</div>
-        <div class="card">Champion 🔥<br>3.5M/month</div>
+
+        <div class="card">
+            <h3>Starter</h3>
+            <p>750K IDR/month</p>
+            <p>1 Subject</p>
+            <p>4 Sessions</p>
+        </div>
+
+        <div class="card">
+            <h3>Achiever ⭐</h3>
+            <p>1.5M IDR/month</p>
+            <p>Up to 2 Subjects</p>
+            <p>8 Sessions</p>
+        </div>
+
+        <div class="card">
+            <h3>Champion 🔥</h3>
+            <p>3.5M IDR/month</p>
+            <p>Private 1-to-1</p>
+            <p>Up to 3 Subjects</p>
+        </div>
+
     </div>
+</section>
+
+<!-- TESTIMONIAL -->
+<section class="fade">
+    <h2>Student Results</h2>
+    <div class="grid">
+        <div class="testimonial">“Improved from C to A in 2 months!”</div>
+        <div class="testimonial">“Very clear and engaging teaching.”</div>
+        <div class="testimonial">“Helped me pass my exams confidently.”</div>
+    </div>
+</section>
+
+<!-- FORM -->
+<section id="form" class="fade">
+    <h2>Book Free Trial</h2>
+    <form onsubmit="submitForm(event)">
+        <input type="text" placeholder="Name" required>
+        <select required>
+            <option value="">Select Level</option>
+            <option>Primary</option>
+            <option>Secondary</option>
+            <option>Exam Prep</option>
+        </select>
+        <select required>
+            <option value="">Subject</option>
+            <option>Math</option>
+            <option>English</option>
+            <option>Science</option>
+            <option>IT</option>
+        </select>
+        <input type="text" placeholder="Phone / WhatsApp" required>
+        <button class="button">Submit</button>
+    </form>
 </section>
 
 <!-- CONTACT -->
 <section class="fade" style="text-align:center;">
     <h2>Contact Us</h2>
-    <p>mpvacademy100@gmail.com</p>
-    <p>+65 8987 2923</p>
+    <p>Email: mpvacademy100@gmail.com</p>
+    <p>Phone: +65 8987 2923</p>
 </section>
 
 <!-- WHATSAPP FLOAT -->
 <a href="https://wa.me/6589872923" class="whatsapp">💬</a>
 
-<script>
+<footer>
+    <p>© 2026 MPV Academy</p>
+</footer>
 
-/* TABS */
-function showTab(tab) {
-    document.querySelectorAll('.card').forEach(el => el.classList.add('hidden'));
+<script>
+function showTab(event, tab) {
+    document.querySelectorAll('[id]').forEach(el => {
+        if(el.classList.contains('card')) el.classList.add('hidden');
+    });
     document.getElementById(tab).classList.remove('hidden');
 
     document.querySelectorAll('.tab').forEach(el => el.classList.remove('active'));
     event.target.classList.add('active');
 }
 
-/* LEVEL SELECTOR */
-function showLevel(level) {
-    alert("You selected: " + level + " level. We will recommend the best program for you!");
-}
-
-/* SCROLL ANIMATION */
 window.addEventListener('scroll', () => {
     document.querySelectorAll('.fade').forEach(el => {
-        const top = el.getBoundingClientRect().top;
-        if (top < window.innerHeight - 50) {
+        if (el.getBoundingClientRect().top < window.innerHeight - 50) {
             el.classList.add('show');
         }
     });
 });
 
+function submitForm(e) {
+    e.preventDefault();
+    alert("Thank you! We will contact you shortly via WhatsApp.");
+}
 </script>
 
 </body>
