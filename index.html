@@ -15,7 +15,6 @@ body { margin:0; font-family:Arial; background:#f5f5f5; }
 }
 
 .btn {
-  display:inline-block;
   padding:12px 18px;
   margin:8px;
   background:white;
@@ -23,21 +22,15 @@ body { margin:0; font-family:Arial; background:#f5f5f5; }
   border-radius:8px;
   text-decoration:none;
   font-weight:bold;
+  display:inline-block;
 }
 
-section { padding:50px 20px; max-width:1000px; margin:auto; }
-
-.grid {
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-  gap:15px;
-}
+section { padding:40px; max-width:900px; margin:auto; }
 
 .card {
   background:white;
   padding:20px;
   border-radius:12px;
-  box-shadow:0 3px 10px rgba(0,0,0,0.1);
 }
 </style>
 </head>
@@ -45,32 +38,16 @@ section { padding:50px 20px; max-width:1000px; margin:auto; }
 <body>
 
 <div class="hero">
-  <h1>MPV Academy 🚀</h1>
-  <p>Math • English • Science • IT</p>
+<h1>MPV Academy 🚀</h1>
+<p>Math • English • Science • IT</p>
 
-  <a class="btn" href="apply.html">Book Trial</a>
-  <a class="btn" href="login.html">Student Login</a>
+<a class="btn" href="apply.html">Book Trial</a>
+<a class="btn" href="login.html">Login</a>
 </div>
 
 <section>
 <h2>Why Us</h2>
-
-<div class="grid">
-  <div class="card">Small Group (Max 5)</div>
-  <div class="card">Exam-Focused Learning</div>
-  <div class="card">Personalised Coaching</div>
-  <div class="card">Primary → University</div>
-</div>
-</section>
-
-<section>
-<h2>Pricing</h2>
-
-<div class="grid">
-  <div class="card">Starter – 750K</div>
-  <div class="card">Achiever – 1.5M</div>
-  <div class="card">Champion – 3.5M</div>
-</div>
+<div class="card">Small classes • Exam focused • Personal coaching</div>
 </section>
 
 </body>
