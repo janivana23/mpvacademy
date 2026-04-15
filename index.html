@@ -47,7 +47,6 @@ body {
 
 .hero p {
   opacity:0.9;
-  font-size:16px;
 }
 
 .btn {
@@ -78,11 +77,6 @@ h2 {
   margin-bottom:15px;
 }
 
-p {
-  line-height:1.6;
-}
-
-/* GRID */
 .grid {
   display:grid;
   grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
@@ -108,10 +102,9 @@ p {
   font-size:18px;
   font-weight:bold;
   color:#6a0dad;
-  margin-bottom:10px;
 }
 
-/* TAGS */
+/* TAG */
 .tag {
   display:inline-block;
   padding:4px 10px;
@@ -122,11 +115,47 @@ p {
   color:#6a0dad;
 }
 
+/* TESTIMONIAL */
+.testimonial {
+  font-style:italic;
+  color:#444;
+}
+
+/* STATS */
+.stats {
+  display:flex;
+  justify-content:space-around;
+  flex-wrap:wrap;
+  background:#fff;
+  padding:40px 20px;
+  border-radius:12px;
+  margin-top:20px;
+}
+
+.stats div {
+  text-align:center;
+  font-weight:bold;
+}
+
 /* CTA */
 .cta {
   text-align:center;
   padding:80px 20px;
   background:linear-gradient(to right,#fff,#f6f6ff);
+}
+
+/* FLOATING WHATSAPP */
+.whatsapp {
+  position:fixed;
+  bottom:20px;
+  right:20px;
+  background:#25D366;
+  color:white;
+  padding:15px 18px;
+  border-radius:50px;
+  text-decoration:none;
+  font-weight:bold;
+  box-shadow:0 5px 15px rgba(0,0,0,0.2);
 }
 
 footer {
@@ -154,15 +183,25 @@ footer {
   <a class="btn" href="apply.html">Book Free Trial</a>
 </div>
 
-<!-- TRUST -->
+<!-- STATS -->
+<section>
+<div class="stats">
+  <div>🎓 200+ Students Trained</div>
+  <div>📈 95% Grade Improvement</div>
+  <div>👨‍🏫 Expert Tutors</div>
+  <div>📍 Batam + Online</div>
+</div>
+</section>
+
+<!-- WHY -->
 <section>
 <h2>Why MPV Academy?</h2>
 <div class="grid">
 
-  <div class="card">✔ Small Group Classes (Max 5–7 students)</div>
-  <div class="card">✔ Exam-Focused Learning System</div>
-  <div class="card">✔ Primary → A-Level Support</div>
-  <div class="card">✔ In-Person & Online Learning</div>
+  <div class="card">✔ Small Class (Max 5–7 Students)</div>
+  <div class="card">✔ Exam-Focused System</div>
+  <div class="card">✔ Primary → A-Level Coverage</div>
+  <div class="card">✔ Online + Offline Learning</div>
 
 </div>
 </section>
@@ -170,62 +209,31 @@ footer {
 <!-- SUBJECTS -->
 <section>
 <h2>What We Teach</h2>
-<p>
-Our Subjects — Four core subjects from primary to university level, taught by passionate experts.
-</p>
 
 <div class="grid">
 
   <div class="card">
     <h3>📘 Mathematics</h3>
-    <p>
-      From basic arithmetic to advanced algebra, calculus, and statistics.
-      Build strong problem-solving skills from primary through high school.
-    </p>
-    <div>
-      <span class="tag">Primary</span>
-      <span class="tag">Secondary</span>
-      <span class="tag">High School</span>
-    </div>
+    <p>Strong foundations to advanced problem solving.</p>
+    <span class="tag">Primary</span><span class="tag">Secondary</span><span class="tag">High School</span>
   </div>
 
   <div class="card">
     <h3>📗 English</h3>
-    <p>
-      Grammar, reading comprehension, essay writing, and vocabulary building.
-      Develop confident communication from primary to high school level.
-    </p>
-    <div>
-      <span class="tag">Primary</span>
-      <span class="tag">Secondary</span>
-      <span class="tag">High School</span>
-    </div>
+    <p>Writing, comprehension, IELTS preparation.</p>
+    <span class="tag">Primary</span><span class="tag">Secondary</span><span class="tag">High School</span>
   </div>
 
   <div class="card">
     <h3>🔬 Science</h3>
-    <p>
-      Explore Physics, Chemistry, and Biology with hands-on explanations
-      and clear conceptual learning.
-    </p>
-    <div>
-      <span class="tag">Primary</span>
-      <span class="tag">Secondary</span>
-    </div>
+    <p>Physics, Chemistry, Biology made simple.</p>
+    <span class="tag">Primary</span><span class="tag">Secondary</span>
   </div>
 
   <div class="card">
-    <h3>💻 IT & Computing</h3>
-    <p>
-      Coding, digital literacy, web development, and computer science
-      from beginner to university level.
-    </p>
-    <div>
-      <span class="tag">Primary</span>
-      <span class="tag">Secondary</span>
-      <span class="tag">High School</span>
-      <span class="tag">University</span>
-    </div>
+    <h3>💻 IT & Coding</h3>
+    <p>Programming, web dev, digital skills to university level.</p>
+    <span class="tag">Primary</span><span class="tag">Secondary</span><span class="tag">University</span>
   </div>
 
 </div>
@@ -239,20 +247,38 @@ Our Subjects — Four core subjects from primary to university level, taught by 
 
   <div class="card">
     <div class="price">Starter — From 750K/month</div>
-    <p>Perfect for getting started</p>
-    <p>1 subject • 4 sessions/month • Max 5–7 students • Homework support • Monthly report</p>
+    <p>Small group learning with strong foundation support.</p>
   </div>
 
   <div class="card">
     <div class="price">Achiever — From 1.5M/month</div>
-    <p>Most popular choice</p>
-    <p>Up to 2 subjects • 8 sessions/month • Max 3–5 students • Weekly updates • Exam prep</p>
+    <p>Most popular choice for exam success.</p>
   </div>
 
   <div class="card">
     <div class="price">Champion — From 3.5M/month</div>
-    <p>Private 1-to-1 tutoring</p>
-    <p>Up to 3 subjects • 12 sessions/month • Personal coaching • Parent consultation • Custom plan</p>
+    <p>1-to-1 private coaching for maximum results.</p>
+  </div>
+
+</div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section>
+<h2>What Parents Say</h2>
+
+<div class="grid">
+
+  <div class="card testimonial">
+    “My son improved from C to A in 3 months. Very structured teaching.”
+  </div>
+
+  <div class="card testimonial">
+    “Very clear explanations. My daughter finally understands Math.”
+  </div>
+
+  <div class="card testimonial">
+    “Best tuition centre we’ve tried in Batam.”
   </div>
 
 </div>
@@ -260,10 +286,15 @@ Our Subjects — Four core subjects from primary to university level, taught by 
 
 <!-- CTA -->
 <div class="cta">
-  <h2>Ready to improve grades?</h2>
-  <p>Join students who are already improving their results.</p>
+  <h2>Limited Seats Available</h2>
+  <p>We only accept small groups per class to maintain quality.</p>
   <a class="btn" href="apply.html">Book Free Trial Now</a>
 </div>
+
+<!-- WHATSAPP -->
+<a class="whatsapp" href="https://wa.me/6589872923">
+💬 WhatsApp Us
+</a>
 
 <!-- FOOTER -->
 <footer>
