@@ -20,40 +20,18 @@ body {
     padding: 80px 20px;
 }
 
-.hero h1 {
-    font-size: 40px;
-    margin-bottom: 10px;
-}
-
-.hero p {
-    font-size: 18px;
-    margin-bottom: 20px;
-}
-
+/* BUTTON */
 .button {
-    padding: 14px 24px;
+    padding: 12px 20px;
     background: white;
     color: #ff7a00;
-    text-decoration: none;
     border-radius: 8px;
-    font-weight: bold;
+    text-decoration: none;
     margin: 5px;
     display: inline-block;
 }
 
-/* SECTIONS */
-section {
-    padding: 50px 20px;
-    max-width: 1100px;
-    margin: auto;
-}
-
-h2 {
-    text-align: center;
-    margin-bottom: 30px;
-}
-
-/* CARDS */
+/* GRID */
 .grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -62,34 +40,63 @@ h2 {
 
 .card {
     background: white;
-    padding: 25px;
+    padding: 20px;
     border-radius: 12px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    transition: 0.3s;
 }
 
-/* PRICING */
-.price {
-    border-top: 5px solid #ff7a00;
+.card:hover {
+    transform: translateY(-5px);
 }
 
-/* TESTIMONIALS */
-.testimonial {
-    font-style: italic;
-    background: #fff;
-    padding: 20px;
-    border-left: 5px solid #6a0dad;
-}
-
-/* CONTACT */
-.contact {
+/* TABS */
+.tabs {
     text-align: center;
+    margin-bottom: 20px;
 }
 
-footer {
-    background: #222;
+.tab {
+    display: inline-block;
+    padding: 10px 20px;
+    background: #ddd;
+    margin: 5px;
+    cursor: pointer;
+    border-radius: 6px;
+}
+
+.tab.active {
+    background: #6a0dad;
     color: white;
-    text-align: center;
-    padding: 20px;
+}
+
+/* HIDDEN */
+.hidden {
+    display: none;
+}
+
+/* STICKY WHATSAPP */
+.whatsapp {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: #25D366;
+    color: white;
+    padding: 15px;
+    border-radius: 50%;
+    font-size: 20px;
+    text-decoration: none;
+}
+
+/* ANIMATION */
+.fade {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: 0.6s;
+}
+
+.fade.show {
+    opacity: 1;
+    transform: translateY(0);
 }
 </style>
 </head>
@@ -98,106 +105,83 @@ footer {
 
 <!-- HERO -->
 <div class="hero">
-    <h1>MPV Academy</h1>
-    <p>From Struggling to Top Scorer 🚀</p>
-    <p>Master Math, English, Science & IT with expert guidance</p>
-    
+    <h1>MPV Academy 🚀</h1>
+    <p>From Struggling to Top Scorer</p>
     <a href="https://wa.me/6589872923" class="button">WhatsApp Us</a>
-    <a href="#" class="button">Book Free Trial</a>
 </div>
 
-<!-- WHY -->
-<section>
-    <h2>Why MPV Academy?</h2>
-    <div class="grid">
-        <div class="card">Small Classes (Max 5 Students)</div>
-        <div class="card">Personalized Attention</div>
-        <div class="card">Exam-Focused Strategies</div>
-        <div class="card">Primary to University Level</div>
-        <div class="card">Online & In-Person (Batam)</div>
-        <div class="card">Math + IT Specialization</div>
+<!-- LEVEL SELECTOR -->
+<section class="fade">
+    <h2 style="text-align:center;">Select Your Level</h2>
+    <div style="text-align:center;">
+        <button onclick="showLevel('primary')" class="button">Primary</button>
+        <button onclick="showLevel('secondary')" class="button">Secondary</button>
+        <button onclick="showLevel('advanced')" class="button">Exam Prep</button>
     </div>
 </section>
 
-<!-- SUBJECTS -->
-<section>
-    <h2>Subjects We Offer</h2>
-    <div class="grid">
-        <div class="card"><strong>Math</strong><br>Primary → High School</div>
-        <div class="card"><strong>English</strong><br>Writing & Comprehension</div>
-        <div class="card"><strong>Science</strong><br>Primary & Secondary</div>
-        <div class="card"><strong>IT</strong><br>Beginner → University Level</div>
-    </div>
-</section>
+<!-- SUBJECT TABS -->
+<section class="fade">
+    <h2 style="text-align:center;">Subjects</h2>
 
-<!-- PREMIUM -->
-<section>
-    <h2>Premium Programs</h2>
-    <div class="grid">
-        <div class="card">O-Level Preparation</div>
-        <div class="card">A-Level Preparation</div>
-        <div class="card">University Exam Coaching</div>
-        <div class="card">IELTS Test Preparation</div>
+    <div class="tabs">
+        <div class="tab active" onclick="showTab('math')">Math</div>
+        <div class="tab" onclick="showTab('english')">English</div>
+        <div class="tab" onclick="showTab('it')">IT</div>
     </div>
-    <p style="text-align:center;"><strong>Contact us for personalized quotation</strong></p>
+
+    <div id="math" class="card">Math: Algebra, Geometry, Exam Strategies</div>
+    <div id="english" class="card hidden">English: Writing, Comprehension, IELTS Prep</div>
+    <div id="it" class="card hidden">IT: Coding, Python, University Level</div>
 </section>
 
 <!-- PRICING -->
-<section>
-    <h2>Pricing Plans</h2>
+<section class="fade">
+    <h2 style="text-align:center;">Pricing</h2>
     <div class="grid">
-        
-        <div class="card price">
-            <h3>Starter</h3>
-            <p>750K IDR / month</p>
-            <p>✔ 1 Subject</p>
-            <p>✔ 4 Sessions</p>
-            <p>✔ Max 5 Students</p>
-        </div>
-
-        <div class="card price">
-            <h3>Achiever ⭐</h3>
-            <p>1.5M IDR / month</p>
-            <p>✔ Up to 2 Subjects</p>
-            <p>✔ 8 Sessions</p>
-            <p>✔ Practice & Feedback</p>
-        </div>
-
-        <div class="card price">
-            <h3>Champion 🔥</h3>
-            <p>3.5M IDR / month</p>
-            <p>✔ Private 1-to-1</p>
-            <p>✔ Up to 3 Subjects</p>
-            <p>✔ Fastest Results</p>
-        </div>
-
+        <div class="card">Starter<br>750K/month</div>
+        <div class="card">Achiever ⭐<br>1.5M/month</div>
+        <div class="card">Champion 🔥<br>3.5M/month</div>
     </div>
 </section>
 
-<!-- TESTIMONIALS -->
-<section>
-    <h2>Student Results</h2>
-    <div class="grid">
-        <div class="testimonial">“My math improved from C to A in 2 months!”</div>
-        <div class="testimonial">“Clear explanations and very patient teaching.”</div>
-        <div class="testimonial">“Helped me prepare for exams with confidence.”</div>
-    </div>
+<!-- CONTACT -->
+<section class="fade" style="text-align:center;">
+    <h2>Contact Us</h2>
+    <p>mpvacademy100@gmail.com</p>
+    <p>+65 8987 2923</p>
 </section>
 
-<!-- CTA -->
-<section class="contact">
-    <h2>Start Your Learning Journey Today</h2>
-    <p>Book a free trial or contact us now</p>
-    
-    <a href="https://wa.me/6589872923" class="button">Chat on WhatsApp</a>
-    
-    <p>Email: mpvacademy100@gmail.com</p>
-    <p>Call: +65 8987 2923</p>
-</section>
+<!-- WHATSAPP FLOAT -->
+<a href="https://wa.me/6589872923" class="whatsapp">💬</a>
 
-<footer>
-    <p>© 2026 MPV Academy. All rights reserved.</p>
-</footer>
+<script>
+
+/* TABS */
+function showTab(tab) {
+    document.querySelectorAll('.card').forEach(el => el.classList.add('hidden'));
+    document.getElementById(tab).classList.remove('hidden');
+
+    document.querySelectorAll('.tab').forEach(el => el.classList.remove('active'));
+    event.target.classList.add('active');
+}
+
+/* LEVEL SELECTOR */
+function showLevel(level) {
+    alert("You selected: " + level + " level. We will recommend the best program for you!");
+}
+
+/* SCROLL ANIMATION */
+window.addEventListener('scroll', () => {
+    document.querySelectorAll('.fade').forEach(el => {
+        const top = el.getBoundingClientRect().top;
+        if (top < window.innerHeight - 50) {
+            el.classList.add('show');
+        }
+    });
+});
+
+</script>
 
 </body>
 </html>
