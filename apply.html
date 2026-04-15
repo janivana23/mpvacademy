@@ -1,15 +1,15 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Apply</title>
+<title>Book Trial - MPV Academy</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <style>
 body { font-family:Arial; background:#f5f5f5; }
 
 .box {
-  max-width:420px;
-  margin:80px auto;
+  max-width:450px;
+  margin:70px auto;
   background:white;
   padding:25px;
   border-radius:12px;
@@ -19,6 +19,16 @@ input, select {
   width:100%;
   padding:12px;
   margin:8px 0;
+  box-sizing:border-box;
+}
+
+label {
+  display:block;
+  margin:6px 0;
+}
+
+.subjects {
+  margin:10px 0;
 }
 
 button {
@@ -27,6 +37,7 @@ button {
   background:#6a0dad;
   color:white;
   border:none;
+  border-radius:8px;
 }
 </style>
 </head>
@@ -39,23 +50,36 @@ button {
 
 <form id="form">
 
-<input id="name" placeholder="Name" required>
+<input id="parent" placeholder="Parent Name" required>
+<input id="student" placeholder="Student Name" required>
+<input id="phone" placeholder="Phone Number" required>
 
 <select id="level">
-<option>Primary</option>
-<option>Secondary</option>
-<option>Exam Prep</option>
-<option>University</option>
+  <option>Primary</option>
+  <option>Secondary</option>
+  <option>O Level</option>
+  <option>A Level</option>
+  <option>Pre-University</option>
+  <option>Other</option>
 </select>
 
-<select id="subject">
-<option>Math</option>
-<option>English</option>
-<option>Science</option>
-<option>IT</option>
-</select>
+<h4>Subjects (select multiple):</h4>
 
-<input id="phone" placeholder="Phone" required>
+<div class="subjects">
+  <label><input type="checkbox" value="Math"> Math</label>
+  <label><input type="checkbox" value="English"> English</label>
+  <label><input type="checkbox" value="Science"> Science</label>
+  <label><input type="checkbox" value="Physics"> Physics</label>
+  <label><input type="checkbox" value="Chemistry"> Chemistry</label>
+  <label><input type="checkbox" value="Biology"> Biology</label>
+  <label><input type="checkbox" value="IT"> IT</label>
+</div>
+
+<select id="plan">
+  <option>Starter</option>
+  <option>Achiever</option>
+  <option>Champion</option>
+</select>
 
 <button type="submit">Submit</button>
 
@@ -65,38 +89,37 @@ button {
 
 <script>
 
-const URL = "https://script.google.com/macros/s/AKfycbwWsIr9b0WZWvCaa73cbmQuwT3EnSz9Whalz2vYmYGsw69s9wISI6IpDOwxk2dwaevEzg/exec";
+const URL = "https://script.google.com/macros/s/AKfycbwdVHmk8ih6zDIKBYaJvKF_TAvmeCnhVq0KLCuk5FcILo8J43W67X1U59xk3SmRhWYXYw/exec";
 
 document.getElementById("form").addEventListener("submit", async (e)=>{
   e.preventDefault();
 
-  const data = {
-    action:"lead",
-    name: document.getElementById("name").value,
-    level: document.getElementById("level").value,
-    subject: document.getElementById("subject").value,
-    phone: document.getElementById("phone").value
-  };
+  // collect selected subjects
+  const subjects = Array.from(
+    document.querySelectorAll('input[type="checkbox"]:checked')
+  ).map(cb => cb.value).join(", ");
 
-  try {
-    const res = await fetch(URL,{
-      method:"POST",
-      body:JSON.stringify(data)
-    });
+  const res = await fetch(URL,{
+    method:"POST",
+    body:JSON.stringify({
+      action:"lead",
+      parent_name: parent.value,
+      student_name: student.value,
+      phone: phone.value,
+      level: level.value,
+      subject: subjects,
+      plan: plan.value
+    })
+  });
 
-    const result = await res.json();
+  const result = await res.json();
 
-    if(result && result.whatsapp){
-      window.location.href = result.whatsapp;
-    } else {
-      alert("Submitted but WhatsApp failed. Contact manually.");
-      console.log(result);
-    }
-
-  } catch(err){
-    alert("Error submitting form");
-    console.error(err);
+  if(result.whatsapp){
+    window.location.href = result.whatsapp;
+  } else {
+    alert("Submitted successfully.");
   }
+
 });
 
 </script>
