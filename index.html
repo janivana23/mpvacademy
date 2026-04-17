@@ -290,17 +290,42 @@ body {
 .pricing-amount { font-size: 26px; font-weight: 700; color: var(--purple); }
 .pricing-desc { font-size: 13px; color: var(--muted); margin-top: 4px; }
 
-/* ── FOUNDER STRIP ── */
+/* ── FOUNDER STRIP (UPGRADED) ── */
 .founder-strip {
   background: linear-gradient(180deg, #ffffff 0%, #f7f2ff 100%);
-  padding: 60px 24px;
+  padding: 70px 24px;
   border-bottom: 1px solid rgba(92,15,163,0.08);
 }
 
 .founder-inner {
-  max-width: 900px;
+  max-width: 1000px;
   margin: 0 auto;
-  text-align: center;
+}
+
+.founder-card {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+  background: white;
+  padding: 40px;
+  border-radius: var(--radius);
+  border: 1px solid rgba(92,15,163,0.08);
+  box-shadow: 0 12px 40px rgba(92,15,163,0.08);
+}
+
+/* PHOTO */
+.founder-photo img {
+  width: 140px;
+  height: 140px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 4px solid #fff;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+}
+
+/* TEXT */
+.founder-text {
+  flex: 1;
 }
 
 .founder-label {
@@ -309,26 +334,47 @@ body {
   letter-spacing: 0.14em;
   text-transform: uppercase;
   color: var(--purple);
-  margin-bottom: 10px;
+  margin-bottom: 8px;
 }
 
 .founder-title {
   font-family: 'Fraunces', serif;
-  font-size: 28px;
+  font-size: 26px;
   color: var(--dark);
-  margin-bottom: 14px;
+  margin-bottom: 12px;
 }
 
 .founder-desc {
   font-size: 15px;
   color: var(--muted);
   line-height: 1.7;
-  max-width: 600px;
-  margin: 0 auto 18px;
+  margin-bottom: 14px;
 }
 
-.founder-tags {
-  margin-top: 10px;
+/* SIGNATURE */
+.founder-sign {
+  margin-top: 18px;
+}
+
+.signature {
+  font-family: 'Fraunces', serif;
+  font-style: italic;
+  font-size: 22px;
+  color: var(--dark);
+}
+
+.sign-sub {
+  font-size: 12.5px;
+  color: var(--muted);
+  margin-top: 2px;
+}
+
+/* MOBILE */
+@media (max-width: 768px) {
+  .founder-card {
+    flex-direction: column;
+    text-align: center;
+  }
 }
 
 /* ── OFFERS SECTION ── */
@@ -577,27 +623,46 @@ footer span { color: rgba(255,255,255,0.7); font-weight: 600; }
     </div>
   </div>
 </div>
-<!-- FOUNDER STRIP -->
+
+
+<!-- FOUNDER STRIP (UPGRADED) -->
 <section class="founder-strip fade-up">
   <div class="founder-inner">
-    
-    <div class="founder-text">
-      <p class="founder-label">Meet Your Instructor</p>
-      
-      <h3 class="founder-title">
-        Taught by a University Assistant Lecturer
-      </h3>
-      
-      <p class="founder-desc">
-        Lessons are led by a university-level instructor with real teaching experience —
-        bringing advanced concepts down to a level students can truly understand and apply.
-      </p>
 
-      <div class="founder-tags">
-        <span class="tag">🎓 University Teaching Experience</span>
-        <span class="tag">📊 Data Science Background</span>
-        <span class="tag">🏆 Proven Student Results</span>
+    <div class="founder-card">
+
+      <!-- PHOTO -->
+      <div class="founder-photo">
+        <img src="janice.jpeg" alt="Founder Photo">
       </div>
+
+      <!-- TEXT -->
+      <div class="founder-text">
+        <p class="founder-label">Meet Your Instructor</p>
+
+        <h3 class="founder-title">
+          Taught by a University Assistant Lecturer
+        </h3>
+
+        <p class="founder-desc">
+          I'm a university-level instructor with a background in Data Science,
+          specialising in breaking down complex concepts into simple,
+          exam-winning strategies students can actually apply.
+        </p>
+
+        <div class="founder-tags">
+          <span class="tag">🎓 University Teaching</span>
+          <span class="tag">📊 Data Science</span>
+          <span class="tag">🏆 Proven Results</span>
+        </div>
+
+        <!-- SIGNATURE -->
+        <div class="founder-sign">
+          <div class="signature">Janice Ivana</div>
+          <div class="sign-sub">Founder, MPV Academy</div>
+        </div>
+      </div>
+
     </div>
 
   </div>
