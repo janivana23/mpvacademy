@@ -1,129 +1,693 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<title>MPV Academy - Apply</title>
+<title>MPV Academy - Book Free Trial</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,600;0,700;1,600&family=Plus+Jakarta+Sans:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
-body { font-family:Arial; background:#f5f5f5; }
 
-.box {
-  max-width:450px;
-  margin:70px auto;
-  background:white;
-  padding:25px;
-  border-radius:12px;
+:root {
+  --orange: #ff6b00;
+  --purple: #5c0fa3;
+  --purple-mid: #7c3aed;
+  --purple-light: #f3eaff;
+  --cream: #fdf8f3;
+  --dark: #140a24;
+  --text: #2d1f4a;
+  --muted: #7a6e8a;
+  --border: rgba(92,15,163,0.14);
+  --radius: 16px;
+  --radius-sm: 10px;
 }
 
-input, select {
-  width:100%;
-  padding:12px;
-  margin:8px 0;
-  box-sizing:border-box;
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  background: var(--cream);
+  color: var(--text);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 
-.subjects label {
-  display:block;
-  margin:5px 0;
+/* ── NAV ── */
+.nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 18px 48px;
+  background: rgba(253,248,243,0.95);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(92,15,163,0.08);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+.logo {
+  font-family: 'Fraunces', serif;
+  font-size: 20px;
+  font-weight: 700;
+  background: linear-gradient(135deg, var(--orange), var(--purple));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-decoration: none;
+}
+.nav-back {
+  font-size: 14px;
+  color: var(--muted);
+  text-decoration: none;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  transition: color 0.2s;
+}
+.nav-back:hover { color: var(--purple); }
+
+/* ── LAYOUT ── */
+.page {
+  flex: 1;
+  display: grid;
+  grid-template-columns: 1fr 480px 1fr;
+  gap: 0;
+  padding: 60px 24px 80px;
+  max-width: 1100px;
+  margin: 0 auto;
+  width: 100%;
+  align-items: start;
 }
 
-button {
-  width:100%;
-  padding:12px;
-  background:#6a0dad;
-  color:white;
-  border:none;
-  border-radius:8px;
+/* ── LEFT INFO PANEL ── */
+.info-panel {
+  grid-column: 1;
+  padding-right: 48px;
+  padding-top: 12px;
 }
+
+.info-pill {
+  display: inline-block;
+  background: #fff0e6;
+  color: var(--orange);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 5px 14px;
+  border-radius: 20px;
+  margin-bottom: 18px;
+  border: 1px solid rgba(255,107,0,0.2);
+}
+
+.info-panel h1 {
+  font-family: 'Fraunces', serif;
+  font-size: 34px;
+  line-height: 1.18;
+  color: var(--dark);
+  margin-bottom: 14px;
+}
+.info-panel h1 em { font-style: italic; color: var(--orange); }
+
+.info-panel p {
+  font-size: 15px;
+  color: var(--muted);
+  line-height: 1.7;
+  margin-bottom: 36px;
+}
+
+.perks { display: flex; flex-direction: column; gap: 14px; }
+
+.perk {
+  display: flex;
+  align-items: flex-start;
+  gap: 13px;
+}
+.perk-icon {
+  width: 38px; height: 38px;
+  border-radius: 10px;
+  background: var(--purple-light);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 17px;
+  flex-shrink: 0;
+}
+.perk-text-title { font-size: 14px; font-weight: 600; color: var(--dark); }
+.perk-text-sub { font-size: 13px; color: var(--muted); margin-top: 2px; }
+
+/* ── FORM CARD ── */
+.form-card {
+  grid-column: 2;
+  background: white;
+  border-radius: 22px;
+  border: 1px solid var(--border);
+  padding: 40px 36px;
+  box-shadow: 0 8px 48px rgba(92,15,163,0.08);
+}
+
+.form-header {
+  margin-bottom: 28px;
+}
+.form-header h2 {
+  font-family: 'Fraunces', serif;
+  font-size: 22px;
+  color: var(--dark);
+  margin-bottom: 4px;
+}
+.form-header p { font-size: 13.5px; color: var(--muted); }
+
+/* ── STEP INDICATOR ── */
+.steps {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  margin-bottom: 32px;
+}
+.step {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex: 1;
+}
+.step-num {
+  width: 28px; height: 28px;
+  border-radius: 50%;
+  background: var(--purple-light);
+  color: var(--purple);
+  font-size: 12px;
+  font-weight: 700;
+  display: flex; align-items: center; justify-content: center;
+  transition: 0.3s;
+  flex-shrink: 0;
+}
+.step.active .step-num { background: var(--purple); color: white; }
+.step.done .step-num { background: #25a244; color: white; }
+.step-label { font-size: 12px; font-weight: 500; color: var(--muted); }
+.step.active .step-label { color: var(--purple); }
+.step-line { flex: 1; height: 1px; background: var(--border); margin: 0 8px; }
+
+/* ── FIELD GROUPS ── */
+.field-group { display: flex; flex-direction: column; gap: 14px; }
+.field-group.hidden { display: none; }
+
+.field { display: flex; flex-direction: column; gap: 6px; }
+.field-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+
+label {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text);
+  letter-spacing: 0.01em;
+}
+
+input[type="text"],
+input[type="tel"],
+select {
+  width: 100%;
+  padding: 12px 14px;
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius-sm);
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 14px;
+  color: var(--text);
+  background: #fdfbff;
+  outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s;
+  appearance: none;
+  -webkit-appearance: none;
+}
+input[type="text"]:focus,
+input[type="tel"]:focus,
+select:focus {
+  border-color: var(--purple-mid);
+  box-shadow: 0 0 0 3px rgba(124,58,237,0.1);
+  background: white;
+}
+
+.select-wrap { position: relative; }
+.select-wrap::after {
+  content: '▾';
+  position: absolute;
+  right: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--muted);
+  font-size: 13px;
+  pointer-events: none;
+}
+
+/* ── CHECKBOX GRID ── */
+.checkbox-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin-top: 4px;
+}
+
+.check-label {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 11px 14px;
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  font-size: 13.5px;
+  font-weight: 500;
+  color: var(--text);
+  transition: 0.18s;
+  background: #fdfbff;
+  user-select: none;
+}
+.check-label:hover { border-color: var(--purple-mid); background: var(--purple-light); }
+.check-label input[type="checkbox"] { display: none; }
+.check-box {
+  width: 18px; height: 18px;
+  border-radius: 5px;
+  border: 1.5px solid rgba(92,15,163,0.3);
+  background: white;
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+  transition: 0.18s;
+}
+.check-label.checked { border-color: var(--purple); background: var(--purple-light); }
+.check-label.checked .check-box { background: var(--purple); border-color: var(--purple); }
+.check-box::after {
+  content: '';
+  display: none;
+  width: 5px; height: 9px;
+  border: 2px solid white;
+  border-top: none; border-left: none;
+  transform: rotate(45deg) translateY(-1px);
+}
+.check-label.checked .check-box::after { display: block; }
+.check-icon { font-size: 15px; }
+
+/* ── PLAN TOGGLE ── */
+.plan-toggle { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 4px; }
+.plan-option { position: relative; }
+.plan-option input { display: none; }
+.plan-option label {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  padding: 18px 14px;
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  text-align: center;
+  transition: 0.2s;
+  background: #fdfbff;
+  font-weight: 500;
+  font-size: 13.5px;
+  color: var(--text);
+}
+.plan-option input:checked + label {
+  border-color: var(--purple);
+  background: var(--purple-light);
+  color: var(--purple);
+}
+.plan-icon { font-size: 22px; }
+.plan-sub { font-size: 11.5px; color: var(--muted); font-weight: 400; }
+.plan-option input:checked + label .plan-sub { color: var(--purple-mid); }
+
+/* ── BUTTONS ── */
+.btn-row { display: flex; gap: 10px; margin-top: 28px; }
+
+.btn-back {
+  padding: 13px 22px;
+  border: 1.5px solid var(--border);
+  border-radius: 30px;
+  background: white;
+  color: var(--muted);
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.2s;
+}
+.btn-back:hover { border-color: var(--purple-mid); color: var(--purple); }
+
+.btn-next {
+  flex: 1;
+  padding: 14px;
+  background: linear-gradient(135deg, var(--purple), var(--purple-mid));
+  color: white;
+  border: none;
+  border-radius: 30px;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 15px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: 0.2s;
+  letter-spacing: 0.01em;
+}
+.btn-next:hover { transform: translateY(-1px); box-shadow: 0 6px 24px rgba(92,15,163,0.28); }
+.btn-next:active { transform: translateY(0); }
+.btn-next:disabled { opacity: 0.6; cursor: not-allowed; transform: none; }
+
+/* ── SUCCESS STATE ── */
+.success-state {
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 20px 0;
+}
+.success-icon {
+  width: 72px; height: 72px;
+  border-radius: 50%;
+  background: #e8f7ee;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 32px;
+  margin-bottom: 20px;
+  animation: pop 0.4s cubic-bezier(0.34,1.56,0.64,1);
+}
+@keyframes pop { 0%{transform:scale(0)} 100%{transform:scale(1)} }
+.success-state h3 { font-family:'Fraunces',serif; font-size:22px; color:var(--dark); margin-bottom:8px; }
+.success-state p { font-size:14px; color:var(--muted); line-height:1.6; }
+
+/* ── FOOTER ── */
+footer {
+  background: var(--dark);
+  color: rgba(255,255,255,0.4);
+  text-align: center;
+  padding: 22px;
+  font-size: 13px;
+}
+footer span { color: rgba(255,255,255,0.7); font-weight: 600; }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 860px) {
+  .page { grid-template-columns: 1fr; padding: 32px 16px 60px; }
+  .info-panel { grid-column: 1; padding-right: 0; margin-bottom: 32px; }
+  .form-card { grid-column: 1; padding: 28px 22px; }
+  .nav { padding: 14px 20px; }
+  .info-panel h1 { font-size: 26px; }
+}
+
+@media (max-width: 420px) {
+  .field-row { grid-template-columns: 1fr; }
+  .checkbox-grid { grid-template-columns: 1fr; }
+}
+
 </style>
 </head>
 
 <body>
 
-<div class="box">
-
-<h2>Book Free Trial 🚀</h2>
-
-<form id="form">
-
-<input id="parent" placeholder="Parent Name" required>
-<input id="student" placeholder="Student Name" required>
-<input id="phone" placeholder="Phone Number" required>
-
-<select id="level">
-  <option>Primary</option>
-  <option>Secondary</option>
-  <option>O Level</option>
-  <option>A Level</option>
-  <option>Pre-University</option>
-  <option>Other</option>
-</select>
-
-<h4>Subjects:</h4>
-
-<div class="subjects">
-  <label><input type="checkbox" value="Math"> Math</label>
-  <label><input type="checkbox" value="English"> English</label>
-  <label><input type="checkbox" value="Science"> Science</label>
-  <label><input type="checkbox" value="IT"> IT</label>
-  <label><input type="checkbox" value="IT"> IELTS</label>
-  <label><input type="checkbox" value="IT"> ASEAN Scholarship Prep</label>
+<!-- NAV -->
+<div class="nav">
+  <a href="index.html" class="logo">MPV Academy</a>
+  <a href="index.html" class="nav-back">← Back to home</a>
 </div>
 
-<select id="plan">
-  <option>Group</option>
-  <option>Private</option>
-</select>
+<!-- MAIN -->
+<div class="page">
 
-<button type="submit">Submit</button>
+  <!-- LEFT PANEL -->
+  <div class="info-panel">
+    <div class="info-pill">🚀 Free Trial</div>
+    <h1>Start Your <em>Learning Journey</em> Today</h1>
+    <p>Fill in the form and we'll get back to you within 24 hours with your personalised study plan.</p>
 
-</form>
+    <div class="perks">
+      <div class="perk">
+        <div class="perk-icon">✅</div>
+        <div>
+          <div class="perk-text-title">100% Free First Session</div>
+          <div class="perk-text-sub">No commitment required — try before you decide.</div>
+        </div>
+      </div>
+      <div class="perk">
+        <div class="perk-icon">🎯</div>
+        <div>
+          <div class="perk-text-title">Personalised Study Plan</div>
+          <div class="perk-text-sub">Tailored to your child's level, goals, and schedule.</div>
+        </div>
+      </div>
+      <div class="perk">
+        <div class="perk-icon">💬</div>
+        <div>
+          <div class="perk-text-title">Fast WhatsApp Response</div>
+          <div class="perk-text-sub">We reply within hours — no long waiting times.</div>
+        </div>
+      </div>
+      <div class="perk">
+        <div class="perk-icon">📍</div>
+        <div>
+          <div class="perk-text-title">Batam & Online</div>
+          <div class="perk-text-sub">Learn from our centre or from home — your choice.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FORM CARD -->
+  <div class="form-card">
+
+    <div class="form-header">
+      <h2>Book Free Trial 🎓</h2>
+      <p>Takes less than 60 seconds to complete</p>
+    </div>
+
+    <!-- STEPS -->
+    <div class="steps">
+      <div class="step active" id="step-1-ind">
+        <div class="step-num">1</div>
+        <div class="step-label">Details</div>
+      </div>
+      <div class="step-line"></div>
+      <div class="step" id="step-2-ind">
+        <div class="step-num">2</div>
+        <div class="step-label">Subjects</div>
+      </div>
+      <div class="step-line"></div>
+      <div class="step" id="step-3-ind">
+        <div class="step-num">3</div>
+        <div class="step-label">Plan</div>
+      </div>
+    </div>
+
+    <form id="form" novalidate>
+
+      <!-- STEP 1 -->
+      <div class="field-group" id="step-1">
+        <div class="field-row">
+          <div class="field">
+            <label for="parent">Parent Name</label>
+            <input type="text" id="parent" placeholder="e.g. Ahmad Fauzi" required>
+          </div>
+          <div class="field">
+            <label for="student">Student Name</label>
+            <input type="text" id="student" placeholder="e.g. Aisyah" required>
+          </div>
+        </div>
+        <div class="field">
+          <label for="phone">Phone / WhatsApp Number</label>
+          <input type="tel" id="phone" placeholder="e.g. 08123456789" required>
+        </div>
+        <div class="field">
+          <label for="level">Current Level</label>
+          <div class="select-wrap">
+            <select id="level">
+              <option value="">Select level…</option>
+              <option>Primary</option>
+              <option>Secondary</option>
+              <option>O Level</option>
+              <option>A Level</option>
+              <option>Pre-University</option>
+              <option>Other</option>
+            </select>
+          </div>
+        </div>
+        <div class="btn-row">
+          <button type="button" class="btn-next" onclick="goStep(2)">Next →</button>
+        </div>
+      </div>
+
+      <!-- STEP 2 -->
+      <div class="field-group hidden" id="step-2">
+        <div class="field">
+          <label>Which subjects are you interested in?</label>
+          <div class="checkbox-grid" id="subject-grid">
+            <label class="check-label" onclick="toggleCheck(this)">
+              <input type="checkbox" value="Math">
+              <div class="check-box"></div>
+              <span class="check-icon">📘</span> Math
+            </label>
+            <label class="check-label" onclick="toggleCheck(this)">
+              <input type="checkbox" value="English">
+              <div class="check-box"></div>
+              <span class="check-icon">📗</span> English
+            </label>
+            <label class="check-label" onclick="toggleCheck(this)">
+              <input type="checkbox" value="Science">
+              <div class="check-box"></div>
+              <span class="check-icon">🔬</span> Science
+            </label>
+            <label class="check-label" onclick="toggleCheck(this)">
+              <input type="checkbox" value="IT">
+              <div class="check-box"></div>
+              <span class="check-icon">💻</span> IT & Coding
+            </label>
+            <label class="check-label" onclick="toggleCheck(this)">
+              <input type="checkbox" value="IELTS">
+              <div class="check-box"></div>
+              <span class="check-icon">🏆</span> IELTS
+            </label>
+            <label class="check-label" onclick="toggleCheck(this)">
+              <input type="checkbox" value="ASEAN Scholarship Prep">
+              <div class="check-box"></div>
+              <span class="check-icon">🎓</span> ASEAN Prep
+            </label>
+          </div>
+        </div>
+        <div class="btn-row">
+          <button type="button" class="btn-back" onclick="goStep(1)">← Back</button>
+          <button type="button" class="btn-next" onclick="goStep(3)">Next →</button>
+        </div>
+      </div>
+
+      <!-- STEP 3 -->
+      <div class="field-group hidden" id="step-3">
+        <div class="field">
+          <label>Preferred Learning Mode</label>
+          <div class="plan-toggle">
+            <div class="plan-option">
+              <input type="radio" name="plan" id="plan-group" value="Group" checked>
+              <label for="plan-group">
+                <span class="plan-icon">👥</span>
+                Group Class
+                <span class="plan-sub">4–7 students · More affordable</span>
+              </label>
+            </div>
+            <div class="plan-option">
+              <input type="radio" name="plan" id="plan-private" value="Private">
+              <label for="plan-private">
+                <span class="plan-icon">🎯</span>
+                Private 1-to-1
+                <span class="plan-sub">Focused · Faster results</span>
+              </label>
+            </div>
+          </div>
+        </div>
+
+        <div class="btn-row">
+          <button type="button" class="btn-back" onclick="goStep(2)">← Back</button>
+          <button type="submit" class="btn-next" id="submit-btn">Submit & Book Trial 🚀</button>
+        </div>
+      </div>
+
+    </form>
+
+    <!-- SUCCESS -->
+    <div class="success-state" id="success">
+      <div class="success-icon">🎉</div>
+      <h3>You're all set!</h3>
+      <p>We're redirecting you to WhatsApp to confirm your free trial slot.<br>We'll see you soon!</p>
+    </div>
+
+  </div>
+  <!-- end form-card -->
 
 </div>
+<!-- end page -->
+
+<footer>
+  © 2026 <span>MPV Academy</span> · Batam + Online · All rights reserved
+</footer>
 
 <script>
 
-const URL = "https://script.google.com/macros/s/AKfycbxUIY9iv2oFKaDWpkSLQKqU_g6UEdbWbduzcHSZMSn2eecHqpQpQg87RXxkhRZ5wIfH5g/exec";
+const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxUIY9iv2oFKaDWpkSLQKqU_g6UEdbWbduzcHSZMSn2eecHqpQpQg87RXxkhRZ5wIfH5g/exec";
 
-document.getElementById("form").addEventListener("submit", async (e)=>{
+function goStep(n) {
+  // validate step 1
+  if (n === 2) {
+    const parent = document.getElementById('parent').value.trim();
+    const student = document.getElementById('student').value.trim();
+    const phone = document.getElementById('phone').value.trim();
+    if (!parent || !student || !phone) {
+      shakeField(!parent ? 'parent' : !student ? 'student' : 'phone');
+      return;
+    }
+  }
+
+  for (let i = 1; i <= 3; i++) {
+    document.getElementById('step-' + i).classList.add('hidden');
+    const ind = document.getElementById('step-' + i + '-ind');
+    ind.classList.remove('active', 'done');
+    if (i < n) ind.classList.add('done');
+  }
+  document.getElementById('step-' + n).classList.remove('hidden');
+  document.getElementById('step-' + n + '-ind').classList.add('active');
+}
+
+function shakeField(id) {
+  const el = document.getElementById(id);
+  el.style.borderColor = '#e24b4a';
+  el.style.animation = 'none';
+  el.focus();
+  setTimeout(() => {
+    el.style.borderColor = '';
+  }, 2000);
+}
+
+function toggleCheck(label) {
+  const cb = label.querySelector('input[type="checkbox"]');
+  cb.checked = !cb.checked;
+  label.classList.toggle('checked', cb.checked);
+}
+
+document.getElementById('form').addEventListener('submit', async (e) => {
   e.preventDefault();
 
-  // collect multiple subjects properly
+  const btn = document.getElementById('submit-btn');
+  btn.disabled = true;
+  btn.textContent = 'Submitting…';
+
   const subjects = Array.from(
     document.querySelectorAll('input[type="checkbox"]:checked')
-  ).map(x => x.value).join(", ");
+  ).map(x => x.value).join(', ');
+
+  const plan = document.querySelector('input[name="plan"]:checked').value;
 
   const payload = {
-    action: "lead",
-    parent_name: document.getElementById("parent").value,
-    student_name: document.getElementById("student").value,
-    phone: document.getElementById("phone").value,
-    level: document.getElementById("level").value,
+    action: 'lead',
+    parent_name: document.getElementById('parent').value,
+    student_name: document.getElementById('student').value,
+    phone: document.getElementById('phone').value,
+    level: document.getElementById('level').value,
     subject: subjects,
-    plan: document.getElementById("plan").value
+    plan: plan
   };
 
   try {
-    const res = await fetch(URL, {
-      method: "POST",
+    const res = await fetch(SCRIPT_URL, {
+      method: 'POST',
       body: JSON.stringify(payload)
     });
-
     const result = await res.json();
 
-    if (result.whatsapp) {
-      window.location.href = result.whatsapp;
-    } else {
-      alert("Submitted successfully!");
-    }
+    document.getElementById('form').style.display = 'none';
+    document.querySelector('.steps').style.display = 'none';
+    document.querySelector('.form-header').style.display = 'none';
+    const succ = document.getElementById('success');
+    succ.style.display = 'flex';
+
+    setTimeout(() => {
+      if (result.whatsapp) window.location.href = result.whatsapp;
+    }, 1800);
 
   } catch (err) {
-    alert("Error submitting form");
-    console.log(err);
+    btn.disabled = false;
+    btn.textContent = 'Submit & Book Trial 🚀';
+    alert('Something went wrong. Please try again.');
+    console.error(err);
   }
 });
 
 </script>
-
 </body>
 </html>
